@@ -72,4 +72,18 @@ class Product
 
         return $this;
     }
+
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+
+            'name' => $this->getName(),
+
+            'description' => $this->getDescription(),
+
+            'prix' => $this->getPrix(),
+        ];
+    }
 }

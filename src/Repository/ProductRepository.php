@@ -15,10 +15,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductRepository extends ServiceEntityRepository
 {
-   // public function __construct(ManagerRegistry $registry)
-    //{
-       // parent::__construct($registry, Product::class);
-   // }
 
     private $manager;
 
@@ -42,6 +38,19 @@ class ProductRepository extends ServiceEntityRepository
             ->setPrix($prix);
 
         $this->manager->persist($newProduct);
+        $this->manager->flush();
+    }
+
+    public function updateProduct(Product $product): Product
+    {
+        $this->manager->persist($product);
+        $this->manager->flush();
+
+        return $product;
+    }
+
+    public function deleteProduct(Product $product) {
+        $this->manager->remove($product);
         $this->manager->flush();
     }
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87fd0a9dcfccc4d8a73edae88ac20412",
+    "content-hash": "5a1069a29f4b4fca2871b8c96d4afc3a",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -2139,12 +2139,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "73726fe2505a513d882e794a8dd9b3638d442277"
+                "reference": "a64df4ab5ed73db4f4b0df74e5714c4bbfa5829e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/73726fe2505a513d882e794a8dd9b3638d442277",
-                "reference": "73726fe2505a513d882e794a8dd9b3638d442277",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/a64df4ab5ed73db4f4b0df74e5714c4bbfa5829e",
+                "reference": "a64df4ab5ed73db4f4b0df74e5714c4bbfa5829e",
                 "shasum": ""
             },
             "require": {
@@ -2219,7 +2219,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-12T10:16:15+00:00"
+            "time": "2021-06-22T16:07:27+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -2478,12 +2478,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/error-handler.git",
-                "reference": "f5ae1a4298b754594c66535bbce0f0d6e06c008d"
+                "reference": "4c6b9fc3a006e124bfbaba2c82436c76b160249b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/error-handler/zipball/f5ae1a4298b754594c66535bbce0f0d6e06c008d",
-                "reference": "f5ae1a4298b754594c66535bbce0f0d6e06c008d",
+                "url": "https://api.github.com/repos/symfony/error-handler/zipball/4c6b9fc3a006e124bfbaba2c82436c76b160249b",
+                "reference": "4c6b9fc3a006e124bfbaba2c82436c76b160249b",
                 "shasum": ""
             },
             "require": {
@@ -2497,7 +2497,6 @@
                 "symfony/http-kernel": "^4.4|^5.0|^6.0",
                 "symfony/serializer": "^4.4|^5.0|^6.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2540,7 +2539,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T17:43:50+00:00"
+            "time": "2021-06-22T16:07:27+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -4652,12 +4651,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-http.git",
-                "reference": "46e7acba7a4d279200f934ca5ab10cf790e85399"
+                "reference": "c3f1abc2d124f12c563eb63463cfa053fde4b1d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-http/zipball/46e7acba7a4d279200f934ca5ab10cf790e85399",
-                "reference": "46e7acba7a4d279200f934ca5ab10cf790e85399",
+                "url": "https://api.github.com/repos/symfony/security-http/zipball/c3f1abc2d124f12c563eb63463cfa053fde4b1d3",
+                "reference": "c3f1abc2d124f12c563eb63463cfa053fde4b1d3",
                 "shasum": ""
             },
             "require": {
@@ -4729,7 +4728,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-21T21:43:37+00:00"
+            "time": "2021-06-22T16:07:27+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -5346,7 +5345,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.5",
+        "php": ">=8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*"
