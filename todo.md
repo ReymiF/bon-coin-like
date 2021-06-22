@@ -8,8 +8,10 @@ $
 - lastName
 - tel
 - e-mail
+- password
 - Liste de produits ?
-- role 
+- role
+
 
 ## Produit 
 
@@ -30,11 +32,12 @@ $
 
 - /api/getUser/{id} or name or whatever
 
-Admin
------------------
+## Admin routes
+
 - /api/deleteUser
-
-
+- /api/updateUser
+- /api/deleteProduct
+- /api/updateProduct
 ## Produits routing
 
 - /api/createproduct
