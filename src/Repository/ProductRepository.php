@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,10 +15,37 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+   // public function __construct(ManagerRegistry $registry)
+    //{
+       // parent::__construct($registry, Product::class);
+   // }
+
+    private $manager;
+
+    public function __construct
+    (
+        ManagerRegistry $registry,
+        EntityManagerInterface $manager
+    )
     {
         parent::__construct($registry, Product::class);
+        $this->manager = $manager;
     }
+
+    public function saveProduct($name, $description, $prix)
+    {
+        $newProduct = new Product();
+
+        $newProduct
+            ->setName($name)
+            ->setDescription($description)
+            ->setPrix($prix);
+
+        $this->manager->persist($newProduct);
+        $this->manager->flush();
+    }
+
+
 
     // /**
     //  * @return Product[] Returns an array of Product objects
