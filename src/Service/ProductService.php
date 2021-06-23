@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ProductService
 {
 
-    private $productRepository;
+    private ProductRepository $productRepository;
 
     public function __construct(ProductRepository $productRepository)
     {
