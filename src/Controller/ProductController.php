@@ -34,7 +34,6 @@ class ProductController extends AbstractController
 
     }
 
-
     /**
      * @Route("/api/product/add", name="add_products", methods={"POST"})
      */
@@ -59,16 +58,7 @@ class ProductController extends AbstractController
      */
     public function get($id): JsonResponse
     {
-        $product = $this->productRepository->findOneBy(['id' => $id]);
-
-        $data[] = [
-            'id' => $product->getId(),
-            'name' => $product->getName(),
-            'description' => $product->getDescription(),
-            'prix' => $product->getPrix()
-        ];
-
-        return new JsonResponse($data, Response::HTTP_OK);
+        return $this->productService->get($id);
     }
 
     /**
