@@ -6,7 +6,9 @@ namespace App\Service;
 
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductService
 {
@@ -47,4 +49,21 @@ class ProductService
         ];
         return new JsonResponse($data, Response::HTTP_OK);
     }
+
+    public function add(Request $request): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $name = $data['name'];
+        $description = $data['description'];
+        $prix = $data['prix'];
+
+        if (empty($name) || empty($description) || empty($prix)) {
+            throw new NotFoundHttpException('Expecting mandatory parameters!');
+        }
+        $this->productRepository->saveProduct($name, $description, $prix );
+
+        return new JsonResponse(['status' => 'Product created!'], Response::HTTP_CREATED);
+    }
+
 }

@@ -39,18 +39,9 @@ class ProductController extends AbstractController
      */
     public function add(Request $request): JsonResponse
     {
-        $data = json_decode($request->getContent(), true);
+        $products = $this->productService->add($request);
 
-        $name = $data['name'];
-        $description = $data['description'];
-        $prix = $data['prix'];
-
-        if (empty($name) || empty($description) || empty($prix)) {
-            throw new NotFoundHttpException('Expecting mandatory parameters!');
-        }
-        $this->productRepository->saveProduct($name, $description, $prix );
-
-        return new JsonResponse(['status' => 'Product created!'], Response::HTTP_CREATED);
+        return $products;
     }
 
     /**
