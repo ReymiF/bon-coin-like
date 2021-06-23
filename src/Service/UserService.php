@@ -53,7 +53,8 @@ class UserService
         return new JsonResponse($updateUser->toArray(), Response::HTTP_OK);
     }
 
-    public function FindAll(){
+    public function FindAll(): JsonResponse
+    {
         $users = $this->userRepository->findAll();
         $data = [];
         foreach ($users as $user)
@@ -66,6 +67,19 @@ class UserService
                 'uuid' => $user->getUuid(),
             ];
         }
+        return new JsonResponse($data, Response::HTTP_OK);
+    }
+
+    public function getOneUser($uuid):JsonResponse{
+        $user = $this->userRepository->findOneBy(['uuid'=>$uuid]);
+        $data[] = [
+            'firstname' => $user->getFirstname(),
+            'lastname' => $user->getLastname(),
+            'email' => $user->getEmail(),
+            'tel' => $user->getTel(),
+            'uuid' => $user->getUuid(),
+        ];
+
         return new JsonResponse($data, Response::HTTP_OK);
     }
 }
