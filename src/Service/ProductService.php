@@ -80,4 +80,12 @@ class ProductService
         return new JsonResponse($updatedProduct->toArray(), Response::HTTP_OK);
     }
 
+    public function deleteProduct($id): JsonResponse
+    {
+        $product = $this->productRepository->findOneBy(['id' => $id]);
+
+        $this->productRepository->deleteProduct($product);
+
+        return new JsonResponse(['status' => 'Customer deleted'], Response::HTTP_NO_CONTENT);
+    }
 }

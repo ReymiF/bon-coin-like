@@ -65,11 +65,7 @@ class ProductController extends AbstractController
      */
     public function deleteProduct($id): JsonResponse
     {
-        $product = $this->productRepository->findOneBy(['id' => $id]);
-
-        $this->productRepository->deleteProduct($product);
-
-        return new JsonResponse(['status' => 'Customer deleted'], Response::HTTP_NO_CONTENT);
+       return $this->productService->deleteProduct($id);
     }
 
 
