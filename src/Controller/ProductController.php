@@ -57,16 +57,7 @@ class ProductController extends AbstractController
      */
     public function update($id, Request $request): JsonResponse
     {
-        $product = $this->productRepository->findOneBy(['id' => $id]);
-        $data = json_decode($request->getContent(), true);
-
-        empty($data['name']) ? true : $product->setName($data['name']);
-        empty($data['description']) ? true : $product->setDescription($data['description']);
-        empty($data['prix']) ? true : $product->setPrix($data['prix']);
-
-        $updatedProduct = $this->productRepository->updateProduct($product);
-
-        return new JsonResponse($updatedProduct->toArray(), Response::HTTP_OK);
+        return $this->productService->update($id, $request);
     }
 
     /**
