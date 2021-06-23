@@ -36,4 +36,20 @@ class UserService
 
         return new JsonResponse(['status' => 'User created!'], Response::HTTP_CREATED);
     }
+
+    public function EditUser($uuid, Request $request): JsonResponse{
+        $user = $this->userRepository->findOneBy(['uuid' => $uuid]);
+        $data = json_decode($request->getContent(), true);
+
+        empty($data['firstname']) ? true : $user->setFirstname($data['firstname']);
+        empty($data['lastname']) ? true : $user->setLastname($data['lastname']);
+        empty($data['email']) ? true : $user->setEmail($data['email']);
+        empty($data['tel']) ? true : $user->setTel($data['tel']);
+        empty($data['password']) ? true : $user->setPassword($data['password']);
+
+
+        $updateUser = $this->userRepository->UpdateUser($user);
+
+        return new JsonResponse($updateUser->toArray(), Response::HTTP_OK);
+    }
 }
