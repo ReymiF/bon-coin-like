@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -18,6 +19,8 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
+    private userRepository $userRepository;
+
     public function __construct(
         ManagerRegistry $registry,
         EntityManagerInterface $manager
@@ -62,6 +65,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->manager->flush();
         return $product;
     }
+
 
     // /**
     //  * @return User[] Returns an array of User objects
