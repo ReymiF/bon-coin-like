@@ -91,4 +91,20 @@ class UserController extends AbstractController
             return new JsonResponse($data, Response::HTTP_OK);
     }
 
+    /**
+     * @Route("/api/user/getuser/{uuid}", name="get_user", methods={"GET"})
+     */
+    public function get($uuid) : JsonResponse{
+        $user = $this->userRepository->findOneBy(['uuid'=>$uuid]);
+        $data[] = [
+            'firstname' => $user->getFirstname(),
+            'lastname' => $user->getLastname(),
+            'email' => $user->getEmail(),
+            'tel' => $user->getTel(),
+            'uuid' => $user->getUuid(),
+        ];
+
+        return new JsonResponse($data, Response::HTTP_OK);
+    }
+
 }
