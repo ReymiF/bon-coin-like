@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Uid\Uuid;
 
 
 class UserController extends AbstractController
@@ -40,7 +41,7 @@ class UserController extends AbstractController
         $email = $data['email'];
         $tel = $data['tel'];
         $password = $data['password'];
-        $uuid = $data['uuid'];
+        $uuid = Uuid::v4();
 
         if (empty($firstname) || empty($lastname) || empty($email)) {
             throw new NotFoundHttpException('Expecting mandatory parameters!');
