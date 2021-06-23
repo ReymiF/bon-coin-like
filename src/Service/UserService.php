@@ -52,4 +52,20 @@ class UserService
 
         return new JsonResponse($updateUser->toArray(), Response::HTTP_OK);
     }
+
+    public function FindAll(){
+        $users = $this->userRepository->findAll();
+        $data = [];
+        foreach ($users as $user)
+        {
+            $data[] = [
+                'firstname' => $user->getFirstname(),
+                'lastname' => $user->getLastname(),
+                'email' => $user->getEmail(),
+                'tel' => $user->getTel(),
+                'uuid' => $user->getUuid(),
+            ];
+        }
+        return new JsonResponse($data, Response::HTTP_OK);
+    }
 }
