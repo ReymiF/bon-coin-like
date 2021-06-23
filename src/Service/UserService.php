@@ -82,4 +82,11 @@ class UserService
 
         return new JsonResponse($data, Response::HTTP_OK);
     }
+
+    public function deleteUser($uuid): JsonResponse{
+        $user = $this->userRepository->findOneBy(['uuid'=>$uuid]);
+        $this->userRepository->DeleteUser($user);
+
+        return new JsonResponse('Status => Succesfully deleted', Response::HTTP_OK);
+    }
 }
