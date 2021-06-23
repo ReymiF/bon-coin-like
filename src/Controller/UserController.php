@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Service\UserService;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +16,10 @@ use Symfony\Component\Uid\Uuid;
 
 class UserController extends AbstractController
 {
+    private UserService $userService;
 
-    private UserRepository $userRepository;
-    public function __construct(UserRepository $userRepository){
-        $this->userRepository = $userRepository;
+    public function __construct(UserService $userService){
+        $this->userService = $userService;
     }
 
     public function index(): Response
@@ -34,22 +35,7 @@ class UserController extends AbstractController
      */
     public function add(Request $request): JsonResponse
     {
-        $data = json_decode($request->getContent(), true);
-
-        $firstname = $data['firstname'];
-        $lastname = $data['lastname'];
-        $email = $data['email'];
-        $tel = $data['tel'];
-        $password = $data['password'];
-        $uuid = Uuid::v4();
-
-        if (empty($firstname) || empty($lastname) || empty($email)) {
-            throw new NotFoundHttpException('Expecting mandatory parameters!');
-        }
-
-        $this->userRepository->SaveUser($firstname, $lastname, $tel, $email, $password, $uuid );
-
-        return new JsonResponse(['status' => 'User created!'], Response::HTTP_CREATED);
+        return $this->userService->add($request);
     }
 
     /**
