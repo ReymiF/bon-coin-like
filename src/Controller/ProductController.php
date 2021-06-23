@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Repository\ProductRepository;
+use App\Service\ProductService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,12 +16,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
 
-    private $productRepository;
+    private $productService;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductService $productService)
     {
-        $this->productRepository = $productRepository;
+        $this->productService = $productService;
     }
+
+    /**
+     * @Route("/api/product/getAll", name= "get-all-products", methods={"GET"})
+     */
+    public function getAll(): JsonResponse
+    {
+        $products = $this->productService->findAll();
+
+        return $products;
+
+    }
+
 
     /**
      * @Route("/api/product/add", name="add_products", methods={"POST"})
@@ -39,26 +52,6 @@ class ProductController extends AbstractController
         $this->productRepository->saveProduct($name, $description, $prix );
 
         return new JsonResponse(['status' => 'Product created!'], Response::HTTP_CREATED);
-    }
-
-    /**
-     * @Route("/api/product/getAll", name= "get-all-products", methods={"GET"})
-     */
-    public function getAll(): JsonResponse
-    {
-        $products = $this->productRepository->findAll();
-        $data = [];
-
-        foreach ($products as $product) {
-            $data[] = [
-                'id' => $product->getId(),
-                'name' => $product->getName(),
-                'description' => $product->getDescription(),
-                'prix' => $product->getPrix()
-
-            ];
-        }
-        return new JsonResponse($data, Response::HTTP_OK);
     }
 
     /**
@@ -106,6 +99,7 @@ class ProductController extends AbstractController
 
         return new JsonResponse(['status' => 'Customer deleted'], Response::HTTP_NO_CONTENT);
     }
+
 
     /**
      * @Route("/api", name="home", methods= {"GET"})
