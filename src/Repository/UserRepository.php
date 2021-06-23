@@ -60,10 +60,15 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->manager->flush();
     }
 
-    public function UpdateUser($product){
-        $this->manager->persist($product);
+    public function UpdateUser($user){
+        $this->manager->persist($user);
         $this->manager->flush();
-        return $product;
+        return $user;
+    }
+
+    public function DeleteUser($user){
+        $this->manager->remove($user);
+        $this->manager->flush();
     }
 
 

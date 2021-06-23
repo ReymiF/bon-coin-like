@@ -107,4 +107,14 @@ class UserController extends AbstractController
         return new JsonResponse($data, Response::HTTP_OK);
     }
 
+    /**
+     * @Route("/api/user/delete/{uuid}", name="delete_user", methods={"DELETE"})
+     */
+    public function deleteUser($uuid) : JsonResponse{
+        $user = $this->userRepository->findOneBy(['uuid'=>$uuid]);
+        $this->userRepository->DeleteUser($user);
+
+        return new JsonResponse('Succesfully deleted', Response::HTTP_OK);
+    }
+
 }
