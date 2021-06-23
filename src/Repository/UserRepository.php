@@ -41,7 +41,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    public function SaveUser($firstname, $lastname, $tel, $email, $password, $UUID, $ID, $Role){
+    public function SaveUser($firstname, $lastname, $tel, $email, $password){
         $user = new User();
 
         $user
@@ -49,9 +49,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setLastname($lastname)
             ->setEmail($email)
             ->setTel($tel)
-            ->setPassword($password)
-            ->setUuid($UUID)
-            ->setRoles($Role);
+            ->setPassword($password);
 
 
         $this->manager->persist($user);

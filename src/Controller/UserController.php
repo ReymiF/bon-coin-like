@@ -38,14 +38,12 @@ class UserController extends AbstractController
         $email = $data['email'];
         $tel = $data['tel'];
         $password = $data['password'];
-        $uuid = $data['uuid'];
-        $role = $data['role'];
 
         if (empty($firstname) || empty($lastname) || empty($email)) {
             throw new NotFoundHttpException('Expecting mandatory parameters!');
         }
 
-        $this->userRepository->SaveUser($firstname, $lastname, $tel, $email, $password, $uuid, $role );
+        $this->userRepository->SaveUser($firstname, $lastname, $tel, $email, $password );
 
         return new JsonResponse(['status' => 'User created!'], Response::HTTP_CREATED);
     }
