@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -15,20 +16,23 @@ class Product
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Enter a name")
      */
     private $Name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Enter a description")
      */
     private $Description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
      */
     private $Prix;
 
@@ -78,12 +82,16 @@ class Product
     {
         return [
             'id' => $this->getId(),
-
             'name' => $this->getName(),
-
             'description' => $this->getDescription(),
-
             'prix' => $this->getPrix(),
         ];
     }
+
+    public function getProductInfo(): string
+    {
+        return $this->getId() . ' ' . $this->getName() . ' ' . $this->getDescription() . ' ' . $this->getPrix();
+    }
+
+
 }
