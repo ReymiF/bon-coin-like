@@ -1,4 +1,13 @@
 {
+    "clue/stdio-react": {
+        "version": "v2.4.0"
+    },
+    "clue/term-react": {
+        "version": "v1.3.0"
+    },
+    "clue/utf8-react": {
+        "version": "v1.2.0"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.2"
     },
@@ -82,8 +91,14 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "evenement/evenement": {
+        "version": "v3.0.1"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
+    },
+    "jolicode/jolinotif": {
+        "version": "v2.3.0"
     },
     "laminas/laminas-code": {
         "version": "4.4.0"
@@ -153,6 +168,12 @@
     "psr/log": {
         "version": "1.1.4"
     },
+    "react/event-loop": {
+        "version": "v1.1.1"
+    },
+    "react/stream": {
+        "version": "v1.1.1"
+    },
     "sebastian/cli-parser": {
         "version": "1.0.1"
     },
@@ -212,6 +233,9 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "spatie/phpunit-watcher": {
+        "version": "1.23.2"
     },
     "symfony/browser-kit": {
         "version": "5.4.x-dev"
@@ -361,6 +385,9 @@
     "symfony/polyfill-uuid": {
         "version": "v1.23.0"
     },
+    "symfony/process": {
+        "version": "5.4.x-dev"
+    },
     "symfony/property-access": {
         "version": "5.4.x-dev"
     },
@@ -455,5 +482,8 @@
     },
     "webmozart/assert": {
         "version": "1.10.0"
+    },
+    "yosymfony/resource-watcher": {
+        "version": "v2.0.1"
     }
 }
